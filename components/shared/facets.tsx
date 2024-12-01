@@ -3,15 +3,12 @@ import { cn } from "@/lib/utils"
 import { Title } from "@/components/shared"
 import { FacetRange } from "@/components/shared"
 import { FacetsGroup } from "@/components/shared"
-import {Api} from "@/services/api-client";
 
 interface Props {
   className?: string
 }
 
 export const Facets: FC<Props> = async ({ className }): Promise<ReactElement> => {
-  const data =  await Api.IngredientsService.GET();
-  const ingredients = data.map(item => ({value: item.id.toString(), text: item.name}))
 
   return (
     <div className={cn('', className)}>
@@ -27,11 +24,6 @@ export const Facets: FC<Props> = async ({ className }): Promise<ReactElement> =>
         <Title text='Цена от и до' size="xs" className="mb-7 font-bold" />
         <FacetRange />
       </div>
-
-      <FacetsGroup items={ ingredients }
-                   searchPlaceholder='Поиск...'
-                   title='Ингредиенты:' limit={ 6 }
-                   name="ingredients" />
     </div>
   )
 }
