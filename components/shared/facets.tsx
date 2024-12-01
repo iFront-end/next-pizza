@@ -1,17 +1,26 @@
-import { FC, ReactElement } from "react"
+'use client'
+
+import {FC, ReactElement, useEffect} from "react"
 import { cn } from "@/lib/utils"
 import { Title } from "@/components/shared"
 import { FacetRange } from "@/components/shared"
 import { FacetsGroup } from "@/components/shared"
 import {Api} from "@/services/api-client";
+import {FilterCheckboxProps} from "@/components/shared/facet-checkbox";
 
 interface Props {
   className?: string
 }
 
-export const Facets: FC<Props> = async ({ className }): Promise<ReactElement> => {
-  const data =  await Api.IngredientsService.GET();
-  const ingredients = data.map(item => ({value: item.id.toString(), text: item.name}))
+export const Facets: FC<Props> = ({ className }): ReactElement => {
+  let ingredients: FilterCheckboxProps[] = []
+  useEffect(() => {
+    const getIngredients = async () => {
+      const data = await Api.IngredientsService.GET();
+      ingredients = data.map(item => ({value: item.id.toString(), text: item.name}))
+    }
+    getIngredients()
+  }, []);
 
   return (
     <div className={cn('', className)}>
