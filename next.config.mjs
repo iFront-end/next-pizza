@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    NEXT_SHARP_PATH: "/node_modules/sharp",
-    customKey: 'http://next-pizza.local',
-  },
   experimental: { optimisticClientCache: true },
   images: {
     formats: ['image/avif', 'image/webp'],
