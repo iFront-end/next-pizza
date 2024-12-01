@@ -1,6 +1,6 @@
 import { Title } from "@/components/shared/title"
 import { Container } from "@/components/shared/container"
-import { Facets, Listing, TopBar } from "@/components/shared"
+import { Listing, TopBar } from "@/components/shared"
 import {FC, ReactElement} from "react";
 import {GetSearchParams} from "@/lib/find-pizzas";
 
@@ -17,7 +17,7 @@ const HomePage: FC<Props> = async ({ searchParams }: { searchParams: Promise<Get
       <TopBar />
       <Container className="mt-9">
         <div className="flex items-start gap-x-12">
-          <Facets className="w-[244px]"/>
+          \
           <Listing className="pt-7" searchParams={ await searchParams } />
         </div>
       </Container>
