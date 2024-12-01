@@ -11,9 +11,8 @@ interface Props {
 
 export const Facets: FC<Props> = async ({ className }): Promise<ReactElement> => {
   const data =  await Api.IngredientsService.GET();
-  const ingredients = data.map(item => ({value: item.id.toString(), text: item.name}))
 
-  console.log(ingredients);
+  console.log(data);
 
   return (
     <div className={cn('', className)}>
