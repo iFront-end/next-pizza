@@ -1,0 +1,15 @@
+.main {
+  @apply flex flex-col h-full bg-white overflow-y-auto;
+}
+
+.header {
+  @apply flex-grow-0;
+}
+
+.section {
+  @apply flex-grow pb-32;
+}
+
+.footer {
+  @apply flex-grow-0;
+}

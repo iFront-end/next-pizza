@@ -1,0 +1,12 @@
+.main {
+  scrollbar-gutter: stable;
+  @apply flex flex-col h-full bg-[#F4F1EE] overflow-y-auto;
+}
+
+.header {
+  @apply flex-grow-0;
+}
+
+.section {
+  @apply flex-grow pb-32;
+}

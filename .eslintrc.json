@@ -1,0 +1,7 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "ignorePatterns": ["tailwind.config.ts"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off"
+  }
+}
