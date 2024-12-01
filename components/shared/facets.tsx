@@ -11,8 +11,7 @@ interface Props {
 
 export const Facets: FC<Props> = async ({ className }): Promise<ReactElement> => {
   const data =  await Api.IngredientsService.GET();
-
-  console.log(data);
+  const ingredients = data.map(item => ({value: item.id.toString(), text: item.name}))
 
   return (
     <div className={cn('', className)}>
@@ -28,6 +27,11 @@ export const Facets: FC<Props> = async ({ className }): Promise<ReactElement> =>
         <Title text='Цена от и до' size="xs" className="mb-7 font-bold" />
         <FacetRange />
       </div>
+
+      <FacetsGroup items={ ingredients }
+                   searchPlaceholder='Поиск...'
+                   title='Ингредиенты:' limit={ 6 }
+                   name="ingredients" />
     </div>
   )
 }
