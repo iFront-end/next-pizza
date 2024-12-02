@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, ReactElement, useEffect} from "react"
+import {FC, ReactElement, useEffect, useState} from "react"
 import { cn } from "@/lib/utils"
 import { Title } from "@/components/shared"
 import { FacetRange } from "@/components/shared"
@@ -13,13 +13,15 @@ interface Props {
 }
 
 export const Facets: FC<Props> = ({ className }): ReactElement => {
-  let ingredients: FilterCheckboxProps[] = []
+  const [ingredients, setIngredients] = useState<FilterCheckboxProps[]>([])
+
   useEffect(() => {
     const getIngredients = async () => {
-      const data = await Api.IngredientsService.GET();
-      ingredients = data.map(item => ({value: item.id.toString(), text: item.name}))
+      return await Api.IngredientsService.GET();
     }
-    getIngredients()
+    getIngredients().then(data => {
+      setIngredients(data.map(item => ({value: item.id.toString(), text: item.name})))
+    })
   }, []);
 
   return (
